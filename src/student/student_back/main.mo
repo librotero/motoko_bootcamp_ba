@@ -94,7 +94,7 @@ actor {
         return #ok();
        };
        case null {
-        return #err("no es el usuario")
+        return #err("no es el user")
        }
     };
   };
