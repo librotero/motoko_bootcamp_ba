@@ -19,7 +19,6 @@ actor {
 
   var messageId : Nat = 0;
 
-  //fucntions
 
   public shared ({ caller }) func writeMessage(content : Content) : async Result.Result<Message, Text> {
     messageId += 1;
@@ -49,8 +48,6 @@ actor {
     #ok(message);
   };
 
-  // Voting
-  //upVote:
   public shared ({ caller }) func upVote(messageId : Nat) : async Result.Result<(), Text> {
     switch (wall.get(messageId)) {
       case (?res) {
@@ -68,7 +65,6 @@ actor {
     };
   };
 
-  //downVote:
   public shared func downVote(messageId : Nat) : async Result.Result<(), Text> {
   switch (wall.get(messageId)) {
       case (?res) {
@@ -86,7 +82,6 @@ actor {
     };
   };
 
-  //updateMessage
   public shared({caller}) func updateMessage(messageId : Nat, c : Content) : async Result.Result<(), Text> {
     switch(wall.get(messageId)) {
       case(?res) {
@@ -104,7 +99,6 @@ actor {
     };
   };
 
-  //Get all messages
 
   public shared func getAllMessages() : async [Message] {
     let buffer = Buffer.Buffer<Message>(0);
